@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --open --mode=development --content-base src --inline --hot",
     "prebuild": "rimraf src/client.min.js",
-    "build": "webpack --mode=production",
+    "build": "NODE_ENV=production webpack --mode=production",
     "lint": "eslint src/js",
     "lint:fix": "eslint src/js --fix",
     "precommit": "lint-staged",
@@ -48,6 +48,7 @@
     "lint-staged": "^7.0.4",
     "rimraf": "^2.6.2",
     "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^3.1.3"

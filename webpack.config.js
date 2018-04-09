@@ -1,10 +1,12 @@
 const debug = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 
 module.exports = {
   context: path.join(__dirname, 'src'),
-  devtool: debug ? 'inline-sourcemap' : null,
+  devtool: debug ? 'inline-sourcemap' : false,
   entry: './js/index.js',
   module: {
     rules: [
@@ -37,8 +39,20 @@ module.exports = {
     filename: 'client.min.js',
   },
   plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
   ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: false,
+          ecma: 6,
+          mangle: true,
+        },
+        sourceMap: true,
+      }),
+    ],
+  },
 };
