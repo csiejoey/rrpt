@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Todo = ({ text, completed, onClick }) => (
+  // eslint-disable-next-line
   <li
     onClick={onClick}
     style={{ textDecoration: completed ? 'line-through' : 'none' }}
