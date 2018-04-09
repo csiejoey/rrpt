@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import p from 'purecss';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
 
@@ -7,7 +8,9 @@ const AddTodo = ({ dispatch }) => {
   let input;
   return (
     <div>
-      <form onSubmit={(e) => {
+      <form
+        className={p['pure-form']}
+        onSubmit={(e) => {
         e.preventDefault();
         if (!input.value.trim()) return;
         dispatch(addTodo(input.value));
@@ -15,7 +18,7 @@ const AddTodo = ({ dispatch }) => {
       }}
       >
         <input ref={node => input = node} />
-        <button type="submit">Add Todo</button>
+        <button className={p['pure-button']} type="submit">Add Todo</button>
       </form>
     </div>);
 };
