@@ -1,0 +1,7 @@
+{
+  "ignore": ["src/client.min.js"],
+  "*.js": [
+    "eslint --fix",
+    "git add"
+  ],
+}
