@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-
 module.exports = {
   context: path.join(__dirname, 'src'),
   devtool: debug ? 'inline-sourcemap' : false,
@@ -31,6 +30,13 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/font/[name].[ext]',
+        },
       },
     ],
   },
