@@ -47,6 +47,9 @@ module.exports = {
   plugins: debug ? [] : [
     new webpack.optimize.OccurrenceOrderPlugin(),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
