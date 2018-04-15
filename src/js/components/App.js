@@ -15,7 +15,9 @@ const App = ({ match: { params } }) => (
 
 App.propTypes = {
   match: PropTypes.shape({
-    params: PropTypes.string.isRequired,
+    params: PropTypes.shape({
+      filter: PropTypes.string,
+    }).isRequired,
   }).isRequired,
 };
 
