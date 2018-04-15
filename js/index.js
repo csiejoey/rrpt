@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
-import App from './components/App';
+import Root from './components/Root';
 import rootReducer from './reducers';
+import '../css/main.css';
 
 const middleware = applyMiddleware(logger());
 const store = createStore(
@@ -13,8 +13,6 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('app'),
 );
